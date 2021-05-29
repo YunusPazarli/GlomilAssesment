@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GlomilAssesment.Models.VM
 {
-    public class UserVM
+    public class UserRegisterVM
     {
         public int ID { get; set; }
         public string Name { get; set; }
