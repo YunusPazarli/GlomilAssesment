@@ -38,7 +38,7 @@ namespace GlomilAssesment.Controllers
                 {
                     var claims = new List<Claim>
                 {
-                    
+
                     new Claim(ClaimTypes.Sid,user.ID.ToString()),
                     new Claim(ClaimTypes.Name,user.Name),
                     new Claim(ClaimTypes.UserData , "User")
@@ -47,12 +47,11 @@ namespace GlomilAssesment.Controllers
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
                     await HttpContext.SignInAsync(principal);
 
-                    /*user.LastLoginDate = DateTime.Now*/
+
 
                     _context.SaveChanges();
 
-                    //TempData["UserID"] = HttpContext.User.Claims.ToArray()[0].Value;
-                    //TempData["UserName"] = HttpContext.User.Claims.ToArray()[1].Value;
+
 
                     if (HttpContext.User.Identity.IsAuthenticated)
                     {
@@ -103,7 +102,7 @@ namespace GlomilAssesment.Controllers
                 user.Surname = model.Surname;
                 user.UserName = model.UserName;
                 user.Password = model.Password;
-                user.Password = model.Password;
+                user.BornYear = model.BornYear;
                 _context.Users.Add(user);
                 _context.SaveChanges();
                 return RedirectToAction("Index", "UserLogin");
