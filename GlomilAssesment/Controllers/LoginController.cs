@@ -105,7 +105,7 @@ namespace GlomilAssesment.Controllers
                 //user.BornYear = model.BornYear;
                 _context.Users.Add(user);
                 _context.SaveChanges();
-                return RedirectToAction("Index", "UserLogin");
+                return RedirectToAction("Index", "Login");
             }
 
             return View();

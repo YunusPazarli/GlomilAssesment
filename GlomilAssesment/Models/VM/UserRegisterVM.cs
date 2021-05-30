@@ -12,6 +12,6 @@ namespace GlomilAssesment.Models.VM
         public string Surname { get; set; }
         public string Password { get; set; }
         public string UserName { get; set; }
-        //public DateTime BornYear { get; private set; }
+        public DateTime BornYear { get; set; }
     }
 }
