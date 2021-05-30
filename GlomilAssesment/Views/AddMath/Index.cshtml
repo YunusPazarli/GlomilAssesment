@@ -1,4 +1,6 @@
-﻿<head>
+﻿@model GlomilAssesment.Models.VM.MathVM
+
+<head>
     <title>Login V14</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,52 +27,42 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
 </head>
-<form class="login100-form validate-form flex-sb flex-w">
+
+<form class="login100-form validate-form flex-sb flex-w" action="/AddMath/Index" method="post">
     <span class="txt1 p-b-11">
         Bir sayı giriniz
     </span>
     <div class="wrap-input100 validate-input m-b-36" data-validate="Bir sayı giriniz">
-        <input class="input100" type="text" name="input1">
-        <span class="focus-input100"></span>
+        @*@Html.LabelFor(q => q.input1, new { @class = "bmd-label-floating" })*@
+        @Html.TextBoxFor(q => q.input1, new { @class = "form-control" })
+        @Html.ValidationMessageFor(q => q.input1)
+        @*<input class="input100" type="text" name="input1">
+            <span class="focus-input100"></span>*@
     </div>
     <span class="txt1 p-b-11">
         Bir sayı giriniz
     </span>
     <div class="wrap-input100 validate-input m-b-36" data-validate="Bir sayı giriniz">
-        <input class="input100" type="text" name="input2">
-        <span class="focus-input100"></span>
+        @*@Html.LabelFor(q => q.input2, new { @class = "bmd-label-floating" })*@
+        @Html.TextBoxFor(q => q.input2, new { @class = "form-control" })
+        @Html.ValidationMessageFor(q => q.input2)
+        @*<input class="input100" type="text" name="input2">
+            <span class="focus-input100"></span>*@
     </div>
     <div class="container-login100-form-btn">
-        <button class="login100-form-btn">
+        <button class="login100-form-btn" type="submit">
             Hesapla
         </button>
     </div>
-
-    <div class="wrap-input100 validate-input m-b-36" data-validate="">
-        <span class="txt1 p-b-11">
-            Toplam
-        </span>
-        <input class="input100" type="text" name="input2">
-        <span class="focus-input100"></span>
+    <div class="container-login100-form-btn">
+        <a href="#">
+            <button class="login100-form-btn">
+                Sorular
+            </button>
+        </a>
     </div>
-    <div class="wrap-input100 validate-input m-b-36" data-validate="">
-        <span class="txt1 p-b-11">
-            Fark
-        </span>
-        <span class="focus-input100"></span>
-    </div>
-    <div class="wrap-input100 validate-input m-b-36" data-validate="">
-        <span class="txt1 p-b-11">
-            Çarpım
-        </span>
-        <span class="focus-input100"></span>
-    </div>
-    <div class="wrap-input100 validate-input m-b-36" data-validate="">
-        <span class="txt1 p-b-11">
-            Bölme
-        </span>
-        <span class="focus-input100"></span>
-    </div>
+    
+    
 </form>
 
 <!--===============================================================================================-->

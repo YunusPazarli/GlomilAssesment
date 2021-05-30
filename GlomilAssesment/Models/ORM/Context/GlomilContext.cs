@@ -13,6 +13,8 @@ namespace GlomilAssesment.Models.ORM.Context
         public GlomilContext(DbContextOptions<GlomilContext> options) : base(options) { }
         public DbSet<User> Users { get; set; }
         public DbSet<GlomilAssesment.Models.VM.UserRegisterVM> UserRegisterVM { get; set; }
+        public DbSet<MathEntity> mathEntity { get; set; }
+        public DbSet<GlomilAssesment.Models.VM.MathVM> MathVM { get; set; }
 
         
 

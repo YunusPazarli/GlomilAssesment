@@ -1,6 +1,8 @@
 ﻿using GlomilAssesment.Models.ORM.Context;
 using GlomilAssesment.Models.ORM.Entities;
+using GlomilAssesment.Models.VM;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
@@ -11,85 +13,59 @@ namespace GlomilAssesment.Controllers
 {
     public class AddMathController : Controller
     {
-        //private readonly GlomilContext _context;
-        //public AddMathController(GlomilContext context, IMemoryCache memoryCache) : base(context, memoryCache)
-        //{
-        //    _context = context;
-        //}
-        public IActionResult Index()
+        private readonly GlomilContext _context;
+        public AddMathController(GlomilContext context)/*, IMemoryCache memoryCache) : base(context, memoryCache)*/
         {
-            //int sayi1, sayi2;
-            //char opt;
-            //double sonuc;
-
-
-            //Console.WriteLine("\n\tMenu");
-            //Console.WriteLine("\nTOPLAMA İÇİN + TUŞUNA BASIN");
-            //Console.WriteLine("ÇIKARMA İÇİN - TUŞUNA BASIN");
-            //Console.WriteLine("ÇARPMA İÇİN * TUŞUNA BASIN");
-            //Console.WriteLine("BÖLME İÇİN + TUŞUNA BASIN");
-
-            //Console.Write("\n\n Birinci Sayıyı Girin :");
-            //sayi1 = Convert.ToInt32(Console.ReadLine());
-
-            //Console.Write(" İkinci Sayıyı Girin :");
-            //sayi2 = Convert.ToInt32(Console.ReadLine());
-
-            //Console.Write("\nİŞLEM YAPMAK İÇİN BİR OPERATÖR SEÇİN:\t");
-            //opt = Convert.ToChar(Console.ReadLine());
-
-            //if (opt == '+')
-            //{
-            //    sonuc = sayi1 + sayi2;
-            //    Console.WriteLine("\n{0} + {1} = {2}", sayi1, sayi2, sonuc);
-            //}
-            //else if (opt == '-')
-            //{
-            //    sonuc = sayi1 - sayi2;
-            //    Console.WriteLine("\n{0} - {1} = {2}", sayi1, sayi2, sonuc);
-            //}
-            //else if (opt == '*')
-            //{
-            //    sonuc = sayi1 * sayi2;
-            //    Console.WriteLine("\n{0} x {1} = {2}", sayi1, sayi2, sonuc);
-            //}
-            //else if (opt == '/')
-            //{
-            //    sonuc = (double)sayi1 / sayi2;
-            //    Console.WriteLine("\n{0} / {1} = {2}", sayi1, sayi2, sonuc);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("ÜZGÜNÜN YANLIŞ BİR OPERATÖR GİRDİNİZ!");
-            //}
-
-
-            //Console.ReadKey();
-            return View();
+            _context = context;
         }
 
-        public IActionResult Add()
+        public IActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Add(User model)
+        public IActionResult Index(MathEntity model)
         {
             if (ModelState.IsValid)
             {
-                User user = new User();
-                user.Name = model.Name;
-                user.Surname = model.Surname;
-                user.UserName = model.UserName;
-                user.Password = model.Password;
+                MathEntity mathEntity = new MathEntity();
+                mathEntity.input1 = model.input1;
+                mathEntity.input2 = model.input2;
+                mathEntity.ID = model.ID;
+                mathEntity.sonuc1 = mathEntity.input1 + mathEntity.input2;
+                mathEntity.sonuc2 = mathEntity.input1 - mathEntity.input2;
+                mathEntity.sonuc3 = mathEntity.input1 * mathEntity.input2;
+                mathEntity.sonuc4 = mathEntity.input1 / mathEntity.input2;
 
-                //_context.Users.Add(user);
-                //_context.SaveChanges();
-                return RedirectToAction("Index", "AdminDriver");
+                _context.mathEntity.Add(mathEntity);
+                _context.SaveChanges();
+                
+                return RedirectToAction("detail", new RouteValueDictionary(
+    new { controller = "AddMath", action = "detail", ID = mathEntity.ID }));
             }
 
+
             return View();
+
         }
+        public IActionResult Detail(int id)
+        {
+            MathEntity mathEntity = _context.mathEntity.FirstOrDefault(x => x.ID == id);
+
+            MathVM model = new MathVM();
+
+            model.ID = mathEntity.ID;
+            model.sonuc1 = mathEntity.sonuc1;
+            model.sonuc2 = mathEntity.sonuc2;
+            model.sonuc3 = mathEntity.sonuc3;
+            model.sonuc4 = mathEntity.sonuc4;
+
+            return View(model);
+        }
+
+       
     }
 }
+
+       
