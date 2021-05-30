@@ -12,5 +12,7 @@ namespace GlomilAssesment.Models.ORM.Context
         public GlomilContext(DbContextOptions<GlomilContext> options) : base(options) { }
         public DbSet<User> Users { get; set; }
 
+        
+
     }
 }
