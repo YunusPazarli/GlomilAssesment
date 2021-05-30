@@ -102,7 +102,7 @@ namespace GlomilAssesment.Controllers
                 user.Surname = model.Surname;
                 user.UserName = model.UserName;
                 user.Password = model.Password;
-                //user.BornYear = model.BornYear;
+                user.BornYear = model.BornYear;
                 _context.Users.Add(user);
                 _context.SaveChanges();
                 return RedirectToAction("Index", "Login");

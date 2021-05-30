@@ -14,7 +14,7 @@ namespace GlomilAssesment.Controllers
     public class AddMathController : Controller
     {
         private readonly GlomilContext _context;
-        public AddMathController(GlomilContext context)/*, IMemoryCache memoryCache) : base(context, memoryCache)*/
+        public AddMathController(GlomilContext context, IMemoryCache memoryCache) /*: base(context, memoryCache)*/
         {
             _context = context;
         }

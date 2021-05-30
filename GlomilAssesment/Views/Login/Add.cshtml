@@ -1,53 +1,126 @@
 ﻿@model GlomilAssesment.Models.VM.UserRegisterVM
 
-@{
-    ViewData["Title"] = "Add";
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
 
-<h1>Add</h1>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+                <form class="login100-form validate-form flex-sb flex-w" action="/Login/Add" method="post">
+                    <span class="login100-form-title p-b-32">
+                        Account Sign Up
+                    </span>
 
-<h4>UserRegisterVM</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Add">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                    <span class="txt1 p-b-11">
+                        Username
+                    </span>
+                    <div class="wrap-input100 validate-input m-b-36" data-validate="Username is required">
+                        @Html.TextBoxFor(q => q.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(q => q.UserName)
+                    </div>
+                    <span class="txt1 p-b-11">
+                        Name
+                    </span>
+                    <div class="wrap-input100 validate-input m-b-36" data-validate="Name is required">
+                        @Html.TextBoxFor(q => q.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(q => q.Name)
+                    </div>
+                    <span class="txt1 p-b-11">
+                        Surname
+                    </span>
+                    <div class="wrap-input100 validate-input m-b-36" data-validate="Surname is required">
+                        @Html.TextBoxFor(q => q.Surname, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(q => q.Surname)
+                    </div>
+                    <span class="txt1 p-b-11">
+                        Birthday
+                    </span>
+                    <div class="wrap-input100 validate-input m-b-36" data-validate="Birthday is required">
+                                               
+                        @Html.TextBoxFor(q => q.BornYear, new { @type = "date", @name = "driverlicense", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
+                        @Html.ValidationMessageFor(q => q.BornYear)
+                    </div>
+
+                    <span class="txt1 p-b-11">
+                        Password
+                    </span>
+                    <div class="wrap-input100 validate-input m-b-12" data-validate="Password is required">
+                        @Html.PasswordFor(q => q.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(q => q.Password)
+                        <span class="btn-show-pass">
+                            <i class="fa fa-eye"></i>
+                        </span>
+
+                    </div>
+
+                    <div class="flex-sb-m w-full p-b-48">
+                        
+
+                        <div>
+                            <a href="#" class="txt3">
+                                Already have an accoun? Login
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Sign Up
+                        </button>
+                    </div>
+
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Surname" class="control-label"></label>
-                <input asp-for="Surname" class="form-control" />
-                <span asp-validation-for="Surname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BornYear" class="control-label"></label>
-                <input asp-for="BornYear" class="form-control" />
-                <span asp-validation-for="BornYear" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/js/main.js"></script>
+
+</body>
+</html>
