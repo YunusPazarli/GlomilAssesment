@@ -38,6 +38,7 @@ namespace GlomilAssesment.Controllers
                 mathEntity.sonuc2 = mathEntity.input1 - mathEntity.input2;
                 mathEntity.sonuc3 = mathEntity.input1 * mathEntity.input2;
                 mathEntity.sonuc4 = mathEntity.input1 / mathEntity.input2;
+                mathEntity.User = model.User;
 
                 _context.mathEntity.Add(mathEntity);
                 _context.SaveChanges();
@@ -62,6 +63,7 @@ namespace GlomilAssesment.Controllers
             model.sonuc3 = mathEntity.sonuc3;
             model.sonuc4 = mathEntity.sonuc4;
 
+
             return View(model);
         }
 
@@ -77,7 +79,7 @@ namespace GlomilAssesment.Controllers
                 sonuc3 = q.sonuc3,
                 sonuc4 = q.sonuc4,
                 UserName = q.User.UserName,
-                UserID = q.User.ID
+                
 
 
             }).ToList();

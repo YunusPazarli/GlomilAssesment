@@ -27,7 +27,7 @@ namespace GlomilAssesment.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Index(UserVM model)
+        public async Task<IActionResult> Index(UserLoginVM model)
         {
             if (ModelState.IsValid)
             {
@@ -39,8 +39,8 @@ namespace GlomilAssesment.Controllers
                     var claims = new List<Claim>
                 {
 
-                    new Claim(ClaimTypes.Sid,user.ID.ToString()),
-                    new Claim(ClaimTypes.Name,user.Name),
+                    new Claim(ClaimTypes.Name,model.UserName),
+                    new Claim(ClaimTypes.Name,user.UserName),
                     new Claim(ClaimTypes.UserData , "User")
                 };
                     var userIdentity = new ClaimsIdentity(claims, "login");
@@ -65,7 +65,7 @@ namespace GlomilAssesment.Controllers
 
                     }
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "AddMath");
                 }
                 else
                 {
