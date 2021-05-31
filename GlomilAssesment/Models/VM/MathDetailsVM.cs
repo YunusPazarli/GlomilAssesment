@@ -9,6 +9,7 @@ namespace GlomilAssesment.Models.VM
     {
         public int ID { get; set; }
         public string UserName { get; set; }
+        public int UserID { get; set; }
         public double input1 { get; set; }
         public double input2 { get; set; }
         public double sonuc1 { get; set; }

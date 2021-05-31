@@ -3,15 +3,17 @@ using System;
 using GlomilAssesment.Models.ORM.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace GlomilAssesment.Migrations
 {
     [DbContext(typeof(GlomilContext))]
-    partial class GlomilContextModelSnapshot : ModelSnapshot
+    [Migration("20210531101512_glomil4")]
+    partial class glomil4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

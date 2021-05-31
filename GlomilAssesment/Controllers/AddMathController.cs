@@ -41,7 +41,7 @@ namespace GlomilAssesment.Controllers
 
                 _context.mathEntity.Add(mathEntity);
                 _context.SaveChanges();
-                
+
                 return RedirectToAction("detail", new RouteValueDictionary(
     new { controller = "AddMath", action = "detail", ID = mathEntity.ID }));
             }
@@ -76,7 +76,9 @@ namespace GlomilAssesment.Controllers
                 sonuc2 = q.sonuc2,
                 sonuc3 = q.sonuc3,
                 sonuc4 = q.sonuc4,
-                UserName = q.User.UserName
+                UserName = q.User.UserName,
+                UserID = q.User.ID
+
 
             }).ToList();
 
@@ -84,8 +86,25 @@ namespace GlomilAssesment.Controllers
 
         }
 
-       
+        public IActionResult UserDetail(int id)
+        {
+
+            User user = _context.Users.FirstOrDefault(x => x.ID == id);
+
+            UserVM model = new UserVM();
+
+            model.ID = user.ID;
+            model.Name = user.Name;
+            model.Surname = user.Surname;
+            model.BornYear = user.BornYear;
+            model.UserName = user.UserName;
+
+            return View(model);
+
+        }
+
+
     }
 }
 
-       
+
