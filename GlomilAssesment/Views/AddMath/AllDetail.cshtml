@@ -1,0 +1,74 @@
+﻿
+<h1>All Details</h1>
+@model List<GlomilAssesment.Models.VM.MathDetailsVM>
+
+<table class="table">
+    <thead class=" text-primary">
+    <th>
+        ID
+    </th>
+    <th>
+        İlk girdi
+    </th>
+    <th>
+        İkinci Girdi
+    </th>
+    <th>
+        Toplama
+    </th>
+    <th>
+        Çıkarma
+    </th>
+    <th>
+        Çarpma
+    </th>
+    <th>
+        Bölme
+    </th>
+    <th>
+        Kullanıcı Adı
+    </th>
+    <th>
+        Kullanıcı Detay
+    </th>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @item.ID
+    </td>
+    <td>
+        @item.input1
+    </td>
+    <td>
+        @item.input2
+    </td>
+    <td>
+        @item.sonuc1
+    </td>
+    <td>
+        @item.sonuc2
+    </td>
+    <td>
+        @item.sonuc3
+    </td>
+    <td>
+        @item.sonuc4
+    </td>
+    <td>
+        @item.UserName
+    </td>
+    <td>
+        <a href="./User/Details/@item.ID">
+            <button>
+                Kullanıcı Detay
+            </button>
+        </a>
+    </td>
+
+</tr>}
+    </tbody>
+</table>

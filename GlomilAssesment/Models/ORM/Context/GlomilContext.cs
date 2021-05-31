@@ -15,7 +15,7 @@ namespace GlomilAssesment.Models.ORM.Context
         public DbSet<GlomilAssesment.Models.VM.UserRegisterVM> UserRegisterVM { get; set; }
         public DbSet<MathEntity> mathEntity { get; set; }
         public DbSet<GlomilAssesment.Models.VM.MathVM> MathVM { get; set; }
-
+        public DbSet<MathDetailsVM> mathDetails { get; set; }
         
 
     }

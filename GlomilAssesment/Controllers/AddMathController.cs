@@ -3,6 +3,7 @@ using GlomilAssesment.Models.ORM.Entities;
 using GlomilAssesment.Models.VM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
@@ -62,6 +63,25 @@ namespace GlomilAssesment.Controllers
             model.sonuc4 = mathEntity.sonuc4;
 
             return View(model);
+        }
+
+        public IActionResult AllDetail()
+        {
+            List<MathDetailsVM> alldetails = _context.mathEntity.Include(a => a.User).Select(q => new MathDetailsVM()
+            {
+                ID = q.ID,
+                input1 = q.input1,
+                input2 = q.input2,
+                sonuc1 = q.sonuc1,
+                sonuc2 = q.sonuc2,
+                sonuc3 = q.sonuc3,
+                sonuc4 = q.sonuc4,
+                UserName = q.User.UserName
+
+            }).ToList();
+
+            return View(alldetails);
+
         }
 
        
